@@ -13,14 +13,11 @@ from pprint import pprint
 
 def adjustImage(infile, factor):
     outfile = os.path.splitext(infile)[0] + '-updated.png'
-    try:
-        im = Image.open(infile)
-        width, height = im.size
-        print im.size, im.mode
-        enhancer = ImageEnhance.Brightness(im)
-        enhancer.enhance(factor).save(outfile)
-    except:
-        raise IOError
+    im = Image.open(infile)
+    width, height = im.size
+    print im.size, im.mode
+    enhancer = ImageEnhance.Brightness(im)
+    enhancer.enhance(factor).save(outfile)
 
 def usage():
     print "Usage: %s factor file1 [file2...]" % sys.argv[0]
